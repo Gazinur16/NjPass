@@ -8,9 +8,9 @@ log = logging.getLogger()
 async def on_startup(*args, **kwargs):
 
     command_list = [
-        BotCommand(command="/start", description="Запуск/Перезапуск"),
-        BotCommand(command="/help", description="Помощь"),
-        BotCommand(command="/about", description="Подробнее о боте")
+        BotCommand(command="/start", description="🚀 Запуск/Перезапуск"),
+        BotCommand(command="/help", description="🆘 Помощь"),
+        BotCommand(command="/about", description="❔ Подробнее о боте")
     ]
     await bot.set_my_commands(commands=command_list)
     log.info('Bot start')

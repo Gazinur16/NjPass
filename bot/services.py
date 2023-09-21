@@ -1,6 +1,18 @@
-# import asyncio
-#
-#
+import asyncio
+import time
+
+from misc import bot
+
+
+# TODO Проверь это на нескольких пользователях!
+async def del_msr_key(chat_id: int, mes_id: int, start_time):
+    while True:
+        if time.monotonic() - start_time > 60 * 3:
+            await bot.delete_message(chat_id=chat_id, message_id=mes_id)
+            break
+
+        await asyncio.sleep(10)
+
 # async def _example1():
 #     add_button(11, 'привет', 'Хелло')
 #
