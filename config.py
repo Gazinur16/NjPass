@@ -1,11 +1,1 @@
-# PROD_MODE = False
-#
-# if PROD_MODE:
-#     CHAT = ''
-#
-#     TG_BOT_TOKEN = ''
-#
-# else:
-#     CHAT = ''
-
-TG_BOT_TOKEN = ''
+TG_BOT_TOKEN = '6627214403:AAFgcHhHGltpU2iD8YD8p8unBoMh9vdrQ8E'

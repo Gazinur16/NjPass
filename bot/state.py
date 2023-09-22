@@ -15,3 +15,4 @@ class SavePass(StatesGroup):
     choose_pass = State()
     input_pass = State()
     input_description = State()
+    input_msr_key = State()
