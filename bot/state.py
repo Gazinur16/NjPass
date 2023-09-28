@@ -16,3 +16,7 @@ class SavePass(StatesGroup):
     input_pass = State()
     input_description = State()
     input_msr_key = State()
+
+
+class ResetBot(StatesGroup):
+    input_yes = State()

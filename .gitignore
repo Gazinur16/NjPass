@@ -1,4 +1,5 @@
 config.py
 *.xml
 .idea
+bot/database.db
 

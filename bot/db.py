@@ -36,3 +36,8 @@ class Database:
     def del_pass_user(self, id_pass: int):
         with self.connection:
             self.cursor.execute("DELETE FROM `pass` WHERE `id` = ?", (id_pass,))
+
+    def del_user(self, tg_id: int):
+        with self.connection:
+            self.cursor.execute("DELETE FROM `users` WHERE `tg_id` = ?", (tg_id,))
+            self.cursor.execute("DELETE FROM `pass` WHERE `tg_id` = ?", (tg_id,))

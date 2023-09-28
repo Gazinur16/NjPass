@@ -23,6 +23,7 @@ class InlineKb:
     cd_but_back_list_pass = CallbackData(f'input_back_list_pass', 'page')
     cd_but_change_pass = CallbackData(f'input_change_pass', 'id')
     cd_but_del_pass = CallbackData(f'input_del_pass', 'id', 'page')
+    cd_but_continue_see_pass = CallbackData(f'input_continue_see_pass')
 
     @classmethod
     def create_msr_key(cls):
@@ -39,18 +40,8 @@ class InlineKb:
     def send_the_key(cls, msr_key: str):
         kb = InlineKeyboardMarkup(row_width=1)
 
-        kb.insert(InlineKeyboardButton('↪️ Переслать в другой чат', switch_inline_query=msr_key))
-
-        return kb
-
-    @classmethod
-    def close_window(cls):
-        kb = InlineKeyboardMarkup(row_width=1)
-
-        kb.row(InlineKeyboardButton(
-            text=Blanks.close,
-            callback_data=cls.cd_but_close.new())
-        )
+        kb.insert(InlineKeyboardButton('↪️ Переслать в другой чат',
+                                       switch_inline_query='\n\nМастер-Ключ от NjPass:\n'+msr_key))
 
         return kb
 
@@ -113,9 +104,15 @@ class InlineKb:
             callback_data=cls.cd_but_del_pass.new(id=id_pass, page=page))
         )
 
+        return kb
+
+    @classmethod
+    def continue_see_pass(cls):
+        kb = InlineKeyboardMarkup(row_width=1)
+
         kb.row(InlineKeyboardButton(
-            text=Blanks.cancel,
-            callback_data=cls.cd_but_close.new())
+            text='🔐 Продолжить просмотр',
+            callback_data=cls.cd_but_continue_see_pass.new())
         )
 
         return kb
@@ -129,7 +126,7 @@ class InlineKb:
             callback_data=cls.cd_but_update_pass.new())
         )
 
-        kb.insert(InlineKeyboardButton('↪️ Переслать', switch_inline_query=password))
+        kb.insert(InlineKeyboardButton('↪️ Переслать', switch_inline_query='\n\nСгенерированный пароль:\n'+password))
 
         kb.row(InlineKeyboardButton(
             text=Blanks.index_len_pass(choose_len_pass, 8),
@@ -149,11 +146,6 @@ class InlineKb:
         kb.insert(InlineKeyboardButton(
             text=Blanks.index_len_pass(choose_len_pass, 24),
             callback_data=cls.cd_but_len_pass.new(len=24))
-        )
-
-        kb.row(InlineKeyboardButton(
-            text=Blanks.close,
-            callback_data=cls.cd_but_close.new())
         )
 
         return kb
@@ -226,11 +218,6 @@ class InlineKb:
                 callback_data=cls.cd_but_control.new(page=page + 1))
             )
 
-        kb.row(InlineKeyboardButton(
-            text=Blanks.close,
-            callback_data=cls.cd_but_close.new())
-        )
-
         return kb
 
 
@@ -242,5 +229,13 @@ class StaticKb:
         kb.add(KeyboardButton(Blanks.create_pass))
         kb.add(KeyboardButton(Blanks.save_pass))
         kb.add(KeyboardButton(Blanks.my_pass))
+
+        return kb
+
+    @classmethod
+    def put_user_btn_menu(cls):
+        kb = ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
+
+        kb.add(KeyboardButton(Blanks.user_menu))
 
         return kb
