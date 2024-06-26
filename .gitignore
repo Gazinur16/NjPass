@@ -1,5 +1,9 @@
 bot/config.py
 *.xml
 .idea
+/data
+*.pyc
+*.db
+*.json
 
 
